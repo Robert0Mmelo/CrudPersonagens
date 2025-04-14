@@ -1,0 +1,32 @@
+{
+  "cards": [
+    {
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7n9i7X9gL2Hubqd9Z2NNovITDisv8wp46Ww&s",
+      "nome": "Bombardeiro Crocodilo",
+      "texto": "Explosões, dentes afiados e atitude – o caçador do pântano moderno.",
+      "linkBotao": "https://exemplo.com/bombardeiro-crocodilo",
+      "id": "cf8c"
+    },
+    {
+      "imagem": "https://stories.cnnbrasil.com.br/wp-content/uploads/sites/9/2022/09/Sem-titulo360.jpg",
+      "nome": "Gru Criança",
+      "texto": "O aspirante a vilão mais fofo e determinado do bairro.",
+      "linkBotao": "https://exemplo.com/gru-crianca",
+      "id": "320e"
+    },
+    {
+      "imagem": "https://upload.wikimedia.org/wikipedia/en/d/dc/MichaelScott.png",
+      "nome": "Michael Scott",
+      "texto": "Gerente regional da Dunder Mifflin. Engraçado (na cabeça dele).",
+      "linkBotao": "https://exemplo.com/michael-scott",
+      "id": "31f0"
+    },
+    {
+      "nome": "Chicken jockeyy",
+      "texto": "Causa estragos em cinemas",
+      "imagem": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREUoa9XzJ-0FhTe3UXf-IW5Ge1L5aiJz4Skw&s",
+      "linkBotao": "https://oglobo.globo.com/cultura/noticia/2025/04/10/chicken-jockey-entenda-a-trend-do-tiktok-que-causou-tumulto-em-sessoes-de-a-minecraft-movie-e-forcou-cinemas-a-adotarem-restricoes.ghtml",
+      "id": "d402"
+    }
+  ]
+}
