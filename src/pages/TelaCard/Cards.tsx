@@ -58,10 +58,10 @@ function Cards() {
 
   return (
     <>
-    <Row className='custom-row'>
-    {cards.map ((card, index) => (
-      <Col key={index}>
-      <Card style={{ width: '18rem' }}>
+    <Row className='custom-row '>
+    {cards.map ((card) => (
+      <Col key={card.id} className="mb-4">
+      <Card style={{ width: '18rem'}}>
         <Card.Img 
           variant="top" 
           src={card.imagem} 
@@ -75,10 +75,10 @@ function Cards() {
           <Card.Title>{card.nome}</Card.Title>
           <Card.Text>{card.texto}</Card.Text>
           <div className='botoes'>
-          <Button variant="primary" onClick={(event) => {event.preventDefault(); window.open(card.linkBotao, "_blank");}}>Ver mais</Button>
+          <Button  onClick={(event) => {event.preventDefault(); window.open(card.linkBotao, "_blank");}}>Ver mais</Button>
           <Button className='btn-danger' onClick={() => Deletar(card.id)}>Deletar</Button>
           </div>
-          <Button onClick={() => Editar(card.id,card.nome,card.imagem,card.texto,card.linkBotao)}>Editar</Button>
+          <Button variant="secondary" onClick={() => Editar(card.id,card.nome,card.imagem,card.texto,card.linkBotao)}>Editar</Button>
         </Card.Body>
       </Card>
     </Col>
