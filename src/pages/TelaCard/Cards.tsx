@@ -5,11 +5,14 @@ import { Button, Card, Col, Modal, Row } from 'react-bootstrap'
 import ICards from '../../Interfaces/ICards'
 import { useNavigate } from 'react-router-dom'
 import TelaModal from '../Modal/TelaModal'
+import ModalDeletar from '../Modal/TelaModalDeletar'
+import TelaModalDeletar from '../Modal/TelaModalDeletar'
 
 function Cards() {
 
   const [cards,setCards] = useState<ICards[]>([])
-  const [abrirModal,setAbrirModal] = useState(false)
+  const [abrirModalEditar,setAbrirModalEditar] = useState(false)
+  const [abrirModalDeletar,setAbrirModalDeletar] = useState(false)
   const [dadosCard,setDadosCard] = useState<ICards>()
   const navigate = useNavigate(); 
 
@@ -20,24 +23,33 @@ function Cards() {
     })
   }
 
-  function Deletar(id: any) {
+  function ConfirmarDeletar(id: any) {
     axios.delete(`http://localhost:3001/cards/${id}`)
     .then(() => {
       BuscarDados()
     })
   }
 
+
   function RedirecionamentoCadastro() {
     navigate("/cadastro")
   }
 
-  function aparecerModal () {
-    setAbrirModal(true)
+  function aparecerModalEditar () {
+    setAbrirModalEditar(true)
+  }
+
+  function aparecerModalDeletar () {
+    setAbrirModalDeletar(true)
   }
 
   
-  function fecharModal () {
-    setAbrirModal(false)
+  function fecharModalEditar () {
+    setAbrirModalEditar(false)
+  }
+
+  function fecharModalDeletar () {
+    setAbrirModalDeletar(false)
   }
 
   function Editar (id:string,nome:string,imagem:string,texto:string,linkBotao:string) {
@@ -49,8 +61,10 @@ function Cards() {
       linkBotao: linkBotao
     }
     setDadosCard(cardParaAtualizar)
-    aparecerModal()
+    aparecerModalEditar()
   }
+
+  
 
   useEffect(() => {
     BuscarDados()
@@ -76,7 +90,7 @@ function Cards() {
           <Card.Text>{card.texto}</Card.Text>
           <div className='botoes'>
           <Button  onClick={(event) => {event.preventDefault(); window.open(card.linkBotao, "_blank");}}>Ver mais</Button>
-          <Button className='btn-danger' onClick={() => Deletar(card.id)}>Deletar</Button>
+          <Button className='btn-danger' onClick={ () => {setDadosCard(card), aparecerModalDeletar()}}>Deletar</Button>
           </div>
           <Button variant="secondary" onClick={() => Editar(card.id,card.nome,card.imagem,card.texto,card.linkBotao)}>Editar</Button>
         </Card.Body>
@@ -86,7 +100,8 @@ function Cards() {
     <Button onClick={RedirecionamentoCadastro} className='btn-primary'>Cadastre um novo personagem</Button>
    </Row>
 
-    <Modal show={abrirModal} onHide={fecharModal}><TelaModal dadosCard={dadosCard} fechar={fecharModal} buscarDados={BuscarDados}/></Modal>
+    <Modal show={abrirModalEditar} onHide={fecharModalEditar}><TelaModal dadosCard={dadosCard} fechar={fecharModalEditar} buscarDados={BuscarDados}/></Modal>
+    <Modal show={abrirModalDeletar} onHide={fecharModalDeletar}><TelaModalDeletar dadosCard={dadosCard} fechar={fecharModalDeletar} funcaoDeletar={() =>ConfirmarDeletar(dadosCard?.id)}/></Modal>
     </>
   )
 }
